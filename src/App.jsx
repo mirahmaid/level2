@@ -18,17 +18,14 @@ function App() {
       </button>
       <br />
       <br />
-      <div>
-        <button onClick={()=>{ dispatch({type: "CHANGE_THEME",newValue: "dark"});}}style={{ marginRight: "20px" }}>Dark
-        </button ><button onClick={()=> {dispatch({type: "CHANGE_THEME",newValue: "light"});}}  style={{ marginRight: "20px" }}>Light
-        </button><button onClick={() => {dispatch({type: "CHANGE_THEME",newValue: "pink"});  }}style={{ marginRight: "20px" }}>Pink</button>
-      </div>
-      <div>
-        <button style={{ marginTop: "30px" }}>      <FaSun /> : <FaMoon /></button>
-      </div>
-      <Link to="/Home"><button style={{ marginTop: "30px" }}>Go to home</button>
-      </Link>
-    </div>
-  );
+        <div>
+      
+        <button onClick={()=>{dispatch({type: "CHANGE_THEME",newValue: Data.theme === "light" ? "dark" : "light"});}}style={{marginTop: "30px"}}>
+        { Data.theme === "light" ? <FaMoon/>: <FaSun/>}
+        </button>
+       <b r />
+        <Link to="/Home"><button style={{ marginTop: "30px" }}>Go to home</button></Link>
+        </div>
+        </div>);
 }
 export default App;
