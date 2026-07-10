@@ -1,73 +1,34 @@
 import "./App.css";
 import "./Theme.css";
 import { FaSun, FaMoon } from "react-icons/fa";
-import { useReducer } from "react";
 import { Link } from "react-router-dom";
-const initialData = {feild:"React.js",level:"senior",count:0,theme:"light"}
-const reducer = (state, action) => {
-   switch (action.type) {
-    case "CHANGE_FEILD":
-    return {...state, feild:action.newValue };
-   case "CHANGE_LEVEL": return { ...state,level: action.newValue};
-       case "INCREASE":
-      return {...state, count: state.count+1};
-    case "CHANGE_THEME":return {...state,  theme: action.newValue};
-    default:
-      return state;
-  } 
-};
-
+import { useContext } from "react";
+import AppContext from "./Context";
 function App() {
-  const [Data, dispatch] = useReducer(reducer, initialData);
-
+  const { Data, dispatch } = useContext(AppContext);
   return (
     <div className={`App ${Data.theme}`}>
-      <h1>My field is {Data.feild} </h1>
-      <button onClick={() => {
-            dispatch({ type: "CHANGE_FEILD", newValue:"Angular"});
-        
-      }
-      }>Change field</button>
+      <h1>My field is {Data.feild}</h1>
+      <button onClick={() => {dispatch({type: "CHANGE_FEILD",newValue: "Angular"});}}> Change field</button>
       <br />
       <h1>I'm a {Data.level}</h1>
-      <button onClick={() => {
-            dispatch({ type: "CHANGE_LEVEL", newValue:"junior"});
-        
-      }
-      }>Change Level </button>
+      <button onClick={() =>{dispatch({type: "CHANGE_LEVEL",newValue: "junior"});}}>Change Level</button>
       <br />
-      <button onClick={() => {
-            dispatch({ type: "INCREASE"});
-        
-      }
-      }>Counter {Data.count}</button>
+      <button onClick={() =>{dispatch({type: "INCREASE"});}}>Counter {Data.count}
+      </button>
       <br />
       <br />
       <div>
-        <button onClick={() => {
-            dispatch({ type: "CHANGE_THEME", newValue:"dark"});
-        
-      }
-      }style={{ marginRight: "20px" }}> Dark </button>
-        <button onClick={() => {
-            dispatch({ type: "CHANGE_THEME", newValue:"light"});
-        
-      }
-      }style={{ marginRight: "20px" }}> Light </button>
-        <button onClick={() => {
-            dispatch({ type: "CHANGE_THEME", newValue:"pink"});
-        
-      }
-      }style={{ marginRight: "20px" }}> Pink </button>
+        <button onClick={()=>{ dispatch({type: "CHANGE_THEME",newValue: "dark"});}}style={{ marginRight: "20px" }}>Dark
+        </button ><button onClick={()=> {dispatch({type: "CHANGE_THEME",newValue: "light"});}}  style={{ marginRight: "20px" }}>Light
+        </button><button onClick={() => {dispatch({type: "CHANGE_THEME",newValue: "pink"});  }}style={{ marginRight: "20px" }}>Pink</button>
       </div>
       <div>
-        <button style={{ marginTop: "30px" }}>
-          <FaSun />:<FaMoon />
-        </button>
+        <button style={{ marginTop: "30px" }}>      <FaSun /> : <FaMoon /></button>
       </div>
-      <button style={{ marginTop: "30px" }}> <Link to="/Home">Go to home</Link></button>
+      <Link to="/Home"><button style={{ marginTop: "30px" }}>Go to home</button>
+      </Link>
     </div>
   );
 }
-
 export default App;
