@@ -2,6 +2,7 @@ import "./App.css";
 import "./Theme.css";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { useReducer } from "react";
+import { Link } from "react-router-dom";
 const initialData = {feild:"React.js",level:"senior",count:0,theme:"light"}
 const reducer = (state, action) => {
    switch (action.type) {
@@ -64,6 +65,7 @@ function App() {
           <FaSun />:<FaMoon />
         </button>
       </div>
+      <button style={{ marginTop: "30px" }}> <Link to="/Home">Go to home</Link></button>
     </div>
   );
 }
