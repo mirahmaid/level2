@@ -1,5 +1,6 @@
 import "./App.css";
 import "./Theme.css";
+import { FaSun ,FaMoon  } from "react-icons/fa";
 
 import { useState } from "react";
 
@@ -25,8 +26,14 @@ function App() {
         <button onClick={() => setTheme("light")}style={{ marginRight: "20px" }}>  Light  </button>
         <button onClick={() => setTheme("pink")} style={{ marginRight: "20px" }}>  Pink  </button>
     </div>
+    <div>
+      <button onClick={() => setTheme(theme==="dark"? "light":"dark")}
+       style = {{marginTop:"30px"}}>
+        {theme ==="dark"?<FaSun />:<FaMoon />}
+
+       </button>
+    </div>
     </div>
   );
 }
-
 export default App;
