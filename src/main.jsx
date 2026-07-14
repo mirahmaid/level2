@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import Home from "./Home.jsx";
-import AppProvider from "./ContextProvider";
+import {DataProvider} from "./context/Data";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -20,8 +20,8 @@ const router = createBrowserRouter([
 ]);
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AppProvider>
-      <RouterProvider router={router} />
-    </AppProvider>
+  <DataProvider>
+  <RouterProvider router={router} />
+</DataProvider>
   </StrictMode>
 );

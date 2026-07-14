@@ -3,29 +3,31 @@ import "./Theme.css";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import AppContext from "./Context";
+import Data from "./context/Data";
 function App() {
-  const { Data, dispatch } = useContext(AppContext);
+  const { feild, level, count, theme, changeField } = useContext(Data);
   return (
-    <div className={`App ${Data.theme}`}>
-      <h1>My field is {Data.feild}</h1>
-      <button onClick={() => {dispatch({type: "CHANGE_FEILD",newValue: "Angular"});}}> Change field</button>
+    <div className={`App ${theme}`}>
+      <h1>My field is {feild}</h1>
+      <button onClick={changeField}>
+        Change field
+      </button>
       <br />
-      <h1>I'm a {Data.level}</h1>
-      <button onClick={() =>{dispatch({type: "CHANGE_LEVEL",newValue: "junior"});}}>Change Level</button>
+      <h1>I'm a {level}</h1>
+      <button>
+        Change Level
+      </button>
       <br />
-      <button onClick={() =>{dispatch({type: "INCREASE"});}}>Counter {Data.count}
+      <button>
+        Counter {count}
       </button>
       <br />
       <br />
-        <div>
-      
-        <button onClick={()=>{dispatch({type: "CHANGE_THEME",newValue: Data.theme === "light" ? "dark" : "light"});}}style={{marginTop: "30px"}}>
-        { Data.theme === "light" ? <FaMoon/>: <FaSun/>}
-        </button>
-       <b r />
+      <div><button
+          style={{ marginTop: "30px" }}  >
+          {theme === "light" ? <FaMoon /> : <FaSun />}</button> 
+         <br />
         <Link to="/Home"><button style={{ marginTop: "30px" }}>Go to home</button></Link>
-        </div>
-        </div>);
-}
+</div>
+</div>);}
 export default App;
